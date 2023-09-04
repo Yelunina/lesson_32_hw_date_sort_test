@@ -1,9 +1,11 @@
 package ait.datesort.test;
 
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -17,7 +19,19 @@ public class DateSortTest {
     @BeforeEach
     void setUp() {
         dateComparator = (s1, s2) -> {
-            //TODO
+            String[] arr1 = s1.split("-");
+            String[] arr2 = s2.split("-");
+            for (int i = arr1.length - 1; i >= 0; i--) {
+                int d1 = Integer.parseInt(arr1[i]);
+                int d2 = Integer.parseInt(arr2[i]);
+                if (d1 > d2) {
+                    return 1;
+                }
+                if (d1 < d2) {
+                    return -1;
+                }
+
+            }
             return 0;
         };
     }
